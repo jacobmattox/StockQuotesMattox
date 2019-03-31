@@ -29,6 +29,9 @@ public class MainActivity extends AppCompatActivity {
                 if(editText.getText().toString().length() > 0) {
                     placeHolder = editText.getText().toString();
                     Stock stock = new Stock(placeHolder);
+                    AsyncTaskStock stockLoaded = new AsyncTaskStock(stock);
+                    stockLoaded.execute();
+
                 }
                 else{
                     Toast.makeText(getApplicationContext(), "Enter valid symbol", Toast.LENGTH_SHORT).show();
