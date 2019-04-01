@@ -71,7 +71,6 @@ public class Stock implements Serializable
         {
             // parse the JSON
             JSONObject stock = JsonUtils.parseStockQuoteJson(line);
-
             try {
                 symbol = stock.getString("symbol");
                 lastTradeTime = stock.getString("latestTime");
@@ -79,6 +78,7 @@ public class Stock implements Serializable
                 change = stock.getString("change");
                 range = stock.getString("week52Low") + " - " + stock.getString("week52High");
                 name = stock.getString("companyName");
+
             } catch (Exception ex) {
                 Log.e(TAG_PREFIX, "Error retrieving data from JSON");
             }

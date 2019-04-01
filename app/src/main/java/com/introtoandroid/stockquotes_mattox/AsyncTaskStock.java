@@ -24,10 +24,13 @@ public class AsyncTaskStock extends AsyncTask<Stock, Void, Stock> {
     protected Stock doInBackground(Stock... Stock) {
         try{
             stock.load();
+            System.out.println("did it load");
+            return stock;
         }
         catch(Exception e){
+            return null;
         }
-        return stock;
+
     }
 
     @Override
