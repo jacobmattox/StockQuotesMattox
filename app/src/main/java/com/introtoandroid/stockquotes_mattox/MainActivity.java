@@ -6,13 +6,21 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     private EditText editText;
     private Button getStocks;
+    private TextView symbol;
+    private TextView name;
+    private TextView price;
+    private TextView time;
+    private TextView change;
+    private TextView year;
 
+    TextView[] textViewsArray;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +30,17 @@ public class MainActivity extends AppCompatActivity {
         editText = findViewById(R.id.editText);
         getStocks = findViewById(R.id.getStocks);
 
+        symbol = findViewById(R.id.textVSymbol);
+        name = findViewById(R.id.textVName);
+        price = findViewById(R.id.textVPrice);
+        time = findViewById(R.id.textVTime);
+        change = findViewById(R.id.textVChange);
+        year = findViewById(R.id.textVYear);
+
+        textViewsArray = new  TextView[] {symbol, name, price, time, change, year};
+
+
+
         getStocks.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -29,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
                 if(editText.getText().toString().length() > 0) {
                     placeHolder = editText.getText().toString();
                     Stock stock = new Stock(placeHolder);
-                    AsyncTaskStock stockLoaded = new AsyncTaskStock(stock);
+                    AsyncTaskStock stockLoaded = new AsyncTaskStock(stock, textViewsArray);
                     stockLoaded.execute();
 
                 }

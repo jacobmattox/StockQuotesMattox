@@ -15,9 +15,11 @@ import java.net.URLConnection;
 public class AsyncTaskStock extends AsyncTask<Stock, Void, Stock> {
 
     private Stock stock;
+    private TextView[] textViews;
 
-    public AsyncTaskStock(Stock stock) {
+    public AsyncTaskStock(Stock stock, TextView[] textViews) {
         this.stock = stock;
+        this.textViews = textViews;
     }
 
     @Override
@@ -36,7 +38,12 @@ public class AsyncTaskStock extends AsyncTask<Stock, Void, Stock> {
     @Override
     protected void onPostExecute(Stock s) {
         super.onPostExecute(s);
-        Log.v("whatever", s.getName());
+        textViews[0].setText(s.getSymbol());
+        textViews[1].setText(s.getName());
+        textViews[2].setText(s.getLastTradePrice());
+        textViews[3].setText(s.getLastTradeTime());
+        textViews[4].setText(s.getChange());
+        textViews[5].setText(s.getRange());
 
     }
 }
