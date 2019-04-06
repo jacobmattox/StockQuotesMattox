@@ -66,6 +66,14 @@ public class MainActivity extends AppCompatActivity {
         if(editText.getText().toString() != ""){
             outState.putString("editText", editText.getText().toString());
         }
+        if(symbol.getText() != ""){
+            outState.putString("symbol", symbol.getText().toString());
+            outState.putString("name", name.getText().toString());
+            outState.putString("price", price.getText().toString());
+            outState.putString("time", time.getText().toString());
+            outState.putString("change", change.getText().toString());
+            outState.putString("year", year.getText().toString());
+        }
     }
 
     @Override
@@ -73,5 +81,17 @@ public class MainActivity extends AppCompatActivity {
         super.onRestoreInstanceState(savedInstanceState);
         String placeHolder = savedInstanceState.getString("editText");
         editText.setText(placeHolder);
+        placeHolder = savedInstanceState.getString("symbol");
+        symbol.setText(placeHolder);
+        placeHolder = savedInstanceState.getString("name");
+        name.setText(placeHolder);
+        placeHolder = savedInstanceState.getString("price");
+        price.setText(placeHolder);
+        placeHolder = savedInstanceState.getString("time");
+        time.setText(placeHolder);
+        placeHolder = savedInstanceState.getString("change");
+        change.setText(placeHolder);
+        placeHolder = savedInstanceState.getString("year");
+        year.setText(placeHolder);
     }
 }

@@ -1,5 +1,6 @@
 package com.introtoandroid.stockquotes_mattox;
 
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.TextView;
@@ -44,6 +45,13 @@ public class AsyncTaskStock extends AsyncTask<Stock, Void, Stock> {
         textViews[3].setText(s.getLastTradeTime());
         textViews[4].setText(s.getChange());
         textViews[5].setText(s.getRange());
+
+        if(Double.parseDouble(s.getChange()) > 0){
+            textViews[4].setTextColor(Color.GREEN);
+        }
+        else if(Double.parseDouble(s.getChange()) < 0){
+            textViews[4].setTextColor(Color.RED);
+        }
 
     }
 }
