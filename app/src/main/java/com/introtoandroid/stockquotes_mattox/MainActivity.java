@@ -48,7 +48,8 @@ public class MainActivity extends AppCompatActivity {
                 if(editText.getText().toString().length() > 0) {
                     placeHolder = editText.getText().toString();
                     Stock stock = new Stock(placeHolder);
-                    AsyncTaskStock stockLoaded = new AsyncTaskStock(stock, textViewsArray);
+                    AsyncTaskStock stockLoaded = new AsyncTaskStock(stock, textViewsArray, getApplicationContext());
+
                     stockLoaded.execute();
 
                 }
@@ -94,4 +95,5 @@ public class MainActivity extends AppCompatActivity {
         placeHolder = savedInstanceState.getString("year");
         year.setText(placeHolder);
     }
+
 }
